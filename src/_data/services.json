@@ -1,0 +1,35 @@
+[
+  {
+    "title": "UI/UX design",
+    "slug": "ux-design",
+    "text": "Jag planerar varje sida utifrån dina kunder: vad de letar efter, vad som får dem att lita på dig och vad de ska göra härnäst. Resultatet är en sida som känns självklar att använda.",
+    "paket": "enkel",
+    "icon": "page",
+    "description": "UX design för små företag i Karlstad: hemsidor som är lätta att förstå och använda, så att fler besökare hör av sig.",
+    "lead": "UX design handlar om hur din hemsida känns att använda. Innan något byggs tänker jag igenom vilka dina besökare är, vad de letar efter och vad du vill att de ska göra – och formar sidan efter det.",
+    "fit": "Du som driver ett mindre företag, till exempel en salong, ett hantverksföretag eller en konsultverksamhet, och vill ha en professionell närvaro på nätet utan att det tar månader.",
+    "seoTitle": "UI/UX design för hemsidor i Karlstad | Navlo"
+  },
+  {
+    "title": "Webbutveckling",
+    "slug": "webbutveckling",
+    "text": "En långsam hemsida tappar besökare innan de ens sett vad du erbjuder. Därför bygger jag snabbt, stabilt och mobilanpassat från start.",
+    "paket": "avancerad",
+    "icon": "pages",
+    "description": "Webbutveckling i Karlstad: snabba, säkra och mobilanpassade hemsidor byggda från grunden.",
+    "lead": "Webbutveckling är att bygga själva hemsidan. Jag skriver koden från grunden, så att sidan blir snabb, säker och fungerar lika bra på mobilen som på datorn.",
+    "fit": "Du som har flera tjänster att visa upp, vill berätta mer om företaget eller planerar att växa – och behöver en sida som klarar det.",
+    "seoTitle": "Webbutveckling i Karlstad – snabba hemsidor | Navlo"
+  },
+  {
+    "title": "Hosting och förvaltning",
+    "slug": "hosting-och-forvaltning",
+    "text": "När sidan är live tar jag hand om det tekniska: säkerhet, uppdateringar och ändringar. Du mejlar mig, och jag fixar det.",
+    "paket": "hosting",
+    "icon": "server",
+    "description": "Hosting och förvaltning av din hemsida: drift, säkerhet och hjälp med ändringar, så att du kan fokusera på ditt företag.",
+    "lead": "En hemsida behöver skötas även efter lanseringen. Jag ser till att din sida är uppe, säker och uppdaterad – och hjälper dig när något behöver ändras.",
+    "fit": "Du som vill att hemsidan bara ska fungera. Det är ett valfritt tillägg – vill du hellre sköta hostingen själv går det också bra.",
+    "seoTitle": "Hosting och förvaltning av hemsidor | Navlo"
+  }
+]

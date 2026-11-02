@@ -1,0 +1,6 @@
+[
+  { "value": "enkel", "label": "Enkel hemsida (2 000 kr)" },
+  { "value": "avancerad", "label": "Avancerad hemsida (3 500 kr)" },
+  { "value": "hosting", "label": "Hosting & drift (229 kr/mån)" },
+  { "value": "vet-inte", "label": "Vet inte än" }
+]

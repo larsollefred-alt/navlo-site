@@ -1,0 +1,41 @@
+{#- Cookie consent (SPEC.MD §7), styled after mild.se. Hidden until consent.js shows it; never a focus trap. #}
+<section class="cookie-banner" aria-labelledby="cookie-title" data-consent-banner hidden>
+  <div class="cookie-banner__tabs" role="tablist" aria-label="Cookies">
+    <button class="cookie-banner__tab" type="button" role="tab" id="cookie-tab-samtycke" aria-controls="cookie-panel-samtycke" aria-selected="true" data-consent-tab>Samtycke</button>
+    <button class="cookie-banner__tab" type="button" role="tab" id="cookie-tab-information" aria-controls="cookie-panel-information" aria-selected="false" tabindex="-1" data-consent-tab>Information</button>
+    <button class="cookie-banner__tab" type="button" role="tab" id="cookie-tab-om" aria-controls="cookie-panel-om" aria-selected="false" tabindex="-1" data-consent-tab>Om</button>
+  </div>
+
+  <div class="cookie-banner__body">
+    <div class="cookie-banner__panel" role="tabpanel" id="cookie-panel-samtycke" aria-labelledby="cookie-tab-samtycke">
+      <h2 class="cookie-banner__title" id="cookie-title">Denna webbplats använder cookies</h2>
+      <p>Jag använder cookies som behövs för att sidan ska fungera. Med ditt samtycke kan jag också mäta besök anonymt, så att jag kan se vad som fungerar och förbättra sidan. Du kan när som helst ändra ditt val via Cookie-inställningar längst ner på sidan.</p>
+    </div>
+
+    <div class="cookie-banner__panel" role="tabpanel" id="cookie-panel-information" aria-labelledby="cookie-tab-information" hidden>
+      <form class="cookie-banner__settings" data-consent-settings>
+        <label class="cookie-banner__option">
+          <span><strong>Nödvändiga</strong> Krävs för att sidan ska fungera, till exempel för att komma ihåg ditt cookieval. Kan inte stängas av.</span>
+          <input type="checkbox" checked disabled>
+        </label>
+        <label class="cookie-banner__option">
+          <span><strong>Statistik</strong> Anonym besöksstatistik som hjälper mig förbättra sidan.</span>
+          <input type="checkbox" name="statistik" data-consent-category="statistik">
+        </label>
+      </form>
+    </div>
+
+    <div class="cookie-banner__panel" role="tabpanel" id="cookie-panel-om" aria-labelledby="cookie-tab-om" hidden>
+      <p>Cookies är små textfiler som webbplatser sparar i din webbläsare. Typsnitt och bilder på den här sidan ligger på min egen server, så inga uppgifter om ditt besök skickas till exempelvis Google.</p>
+      <p><a href="/cookies/">Läs hela cookiepolicyn</a> · <a href="/integritetspolicy/">Integritetspolicy</a></p>
+    </div>
+  </div>
+
+  {#- Order as on mild.se. "Avvisa" is kept clearly visible (full width, same text size, underlined) #}
+  <div class="cookie-banner__actions">
+    <button class="cookie-banner__button cookie-banner__button--main" type="button" data-consent-action="accept">Tillåt alla</button>
+    <button class="cookie-banner__button cookie-banner__button--outline" type="button" data-consent-action="settings">Anpassa</button>
+    <button class="cookie-banner__button cookie-banner__button--outline" type="button" data-consent-action="save" hidden>Spara mitt val</button>
+    <button class="cookie-banner__button cookie-banner__button--text" type="button" data-consent-action="reject">Avvisa</button>
+  </div>
+</section>

@@ -1,0 +1,33 @@
+---
+layout: layouts/base.njk
+title: Portfolio
+seoTitle: Portfolio – Hemsidor vi byggt | Navlo
+description: Se exempel på moderna hemsidor vi byggt för småföretag i Karlstad och Sverige.
+crumbs: []
+---
+<section class="section page-intro">
+  <div class="container">
+    <h1 class="title-page">Portfolio – hemsidor jag byggt</h1>
+    <p class="page-intro__lead">Ett urval av sidor jag byggt. Varje projekt börjar med samma fråga: vad ska besökaren göra när hen kommer in på sidan?</p>
+    {%- set industries = collections.portfolio | unique("industry") %}
+    {%- if industries.length > 1 %}
+    <div class="tags" data-filter hidden>
+      <span class="tags__label" id="filter-label">Filtrera på bransch:</span>
+      <ul class="tags__list" aria-labelledby="filter-label">
+        <li><button class="tag" type="button" data-filter-value="" aria-pressed="true">Alla</button></li>
+        {%- for industry in industries %}
+        <li><button class="tag" type="button" data-filter-value="{{ industry }}" aria-pressed="false">{{ industry }}</button></li>
+        {%- endfor %}
+      </ul>
+    </div>
+    {%- endif %}
+    <ul class="portfolio-grid" data-filter-list>
+      {%- asyncEach item in collections.portfolio %}
+      <li data-industry="{{ item.data.industry }}">{% include "partials/case-card.njk" %}</li>
+      {%- endeach %}
+    </ul>
+    <p class="filter-status visually-hidden" role="status" data-filter-status></p>
+  </div>
+</section>
+{% set ctaTitle = "Vill du synas här också?" %}{% set ctaLabel = "Starta ditt projekt" %}
+{% include "partials/cta-band.njk" %}

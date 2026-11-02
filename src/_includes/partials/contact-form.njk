@@ -1,0 +1,62 @@
+{#- Netlify form "kontakt". Works without JS; form.js adds inline validation and ?paket= pre-selection. -#}
+<form class="form" name="kontakt" method="POST" action="/tack/" data-netlify="true" netlify-honeypot="bot-field" data-form>
+  <input type="hidden" name="form-name" value="kontakt">
+  <p class="visually-hidden">
+    <label>Fyll inte i detta fält: <input name="bot-field" tabindex="-1" autocomplete="off"></label>
+  </p>
+
+  <div class="form__row">
+    <div class="form__field">
+      <label class="form__label" for="namn">Namn</label>
+      <input class="form__input" id="namn" name="namn" type="text" autocomplete="name" required>
+    </div>
+    <div class="form__field">
+      <label class="form__label" for="epost">Mail</label>
+      <input class="form__input" id="epost" name="epost" type="email" autocomplete="email" required>
+    </div>
+  </div>
+
+  <div class="form__field">
+    <label class="form__label" for="foretag">Företagets namn (valfritt)</label>
+    <input class="form__input" id="foretag" name="foretag" type="text" autocomplete="organization">
+  </div>
+
+  <div class="form__field">
+    <label class="form__label" for="paket">Vilken tjänst är du intresserad av?</label>
+    <select class="form__input form__select" id="paket" name="paket">
+      <option value="">Välj tjänst…</option>
+      {%- for option in packages %}
+      <option value="{{ option.value }}">{{ option.label }}</option>
+      {%- endfor %}
+    </select>
+  </div>
+
+  <div class="form__field">
+    <label class="form__label" for="meddelande">Berätta kort om ditt projekt</label>
+    <textarea class="form__input form__textarea" id="meddelande" name="meddelande" rows="6" minlength="20" required placeholder="T.ex. ”Jag driver en frisörsalong och vill att fler bokar tid online.”"></textarea>
+  </div>
+
+  <fieldset class="form__field form__fieldset">
+    <legend class="form__label">Har du en hemsida idag?</legend>
+    <div class="form__choices">
+      <label class="form__choice"><input type="radio" name="har-hemsida" value="ja" id="har-hemsida-ja"> Ja</label>
+      <label class="form__choice"><input type="radio" name="har-hemsida" value="nej"> Nej</label>
+    </div>
+  </fieldset>
+
+  <div class="form__field form__field--url">
+    <label class="form__label" for="hemsida">Adress till din nuvarande hemsida (valfritt)</label>
+    <input class="form__input" id="hemsida" name="hemsida" type="url" inputmode="url" placeholder="https://">
+  </div>
+
+  <div class="form__field">
+    <label class="form__choice form__choice--consent">
+      <input type="checkbox" name="samtycke" value="ja" id="samtycke" required>
+      <span>Jag godkänner att {{ site.name }} sparar mina uppgifter för att kunna svara mig. Läs mer i min <a href="/integritetspolicy/">integritetspolicy</a>.</span>
+    </label>
+  </div>
+
+  <button class="button button--primary button--block" type="submit">Få mitt förslag</button>
+  <p class="form__reassurance">Svar inom 24 timmar · Fast pris · Inte nöjd – betala ingenting</p>
+  <p class="form__phone">Hellre ringa? <a href="tel:{{ site.phoneHref }}">{{ site.phone }}</a></p>
+</form>

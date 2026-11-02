@@ -1,0 +1,50 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: services
+  size: 1
+  alias: service
+  addAllPagesToCollections: true
+permalink: "/tjanster/{{ service.slug }}/"
+crumbs:
+  - { name: Tjänster, url: /tjanster/ }
+eleventyComputed:
+  title: "{{ service.title }}"
+  seoTitle: "{{ service.seoTitle }}"
+  description: "{{ service.description }}"
+---
+{% from "partials/icons.njk" import icon %}
+<article class="section service-page">
+  <div class="container container--narrow">
+    <nav class="breadcrumbs" aria-label="Brödsmulor">
+      <ol>
+        <li><a href="/">Hem</a></li>
+        <li><a href="/tjanster/">Tjänster</a></li>
+        <li><span aria-current="page">{{ service.title }}</span></li>
+      </ol>
+    </nav>
+    <span class="service-page__icon">{{ icon(service.icon, 56) }}</span>
+    <h1 class="title-page">{{ service.title }}</h1>
+    <p class="page-intro__lead">{{ service.lead }}</p>
+
+    <div class="prose">
+      <h2>Passar dig som</h2>
+      <p>{{ service.fit }}</p>
+
+      <h2>Så går det till</h2>
+      <p>Allt börjar med ett kort formulär. Sedan designar jag ett förslag, vi finjusterar tills du är nöjd, och jag bygger och lanserar sidan. Hela processen tar oftast 2–4 veckor. <a href="/#processen">Läs mer om processen</a>.</p>
+      <p>Vill du se resultatet? Titta på <a href="/portfolio/">hemsidor jag byggt för småföretag</a> eller jämför <a href="/#priser">priser för hemsidor</a>.</p>
+    </div>
+
+    <nav class="service-page__other" aria-label="Andra tjänster">
+      <h2 class="service-page__other-title">Andra tjänster</h2>
+      <ul>
+        {%- for other in services %}{% if other.slug != service.slug %}
+        <li><a href="/tjanster/{{ other.slug }}/">{{ other.title }}</a></li>
+        {%- endif %}{% endfor %}
+      </ul>
+    </nav>
+  </div>
+</article>
+{% set ctaTitle = "Vill du veta vad det kostar?" %}
+{% include "partials/cta-band.njk" %}

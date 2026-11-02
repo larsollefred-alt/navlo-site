@@ -1,0 +1,14 @@
+<figure class="testimonial">
+  {%- if item.data.photo %}
+  <div class="avatar">{% image item.data.photo, "", "96px" %}</div>
+  {%- else %}
+  <div class="avatar avatar--initials" aria-hidden="true">{{ item.data.name | initials }}</div>
+  {%- endif %}
+  <blockquote class="testimonial__quote">
+    <p>{{ item.data.quote }}</p>
+  </blockquote>
+  <figcaption class="testimonial__author">
+    <strong>{{ item.data.name }}</strong>
+    <span>{{ [item.data.role, item.data.company] | select | join(", ") }}</span>
+  </figcaption>
+</figure>

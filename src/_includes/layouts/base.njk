@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'">
+  {#- seoTitle = full <title> (max 60 tecken); otherwise "title | Navlo" #}
+  {%- set pageTitle = seoTitle or ((title + " | " + site.name) if title else site.name) %}
+  {%- set pageDescription = description or site.pitch %}
+  {%- set canonical = site.url + page.url %}
+  {%- set socialImage = site.url + (ogImage or site.ogImage) %}
+  <title>{{ pageTitle }}</title>
+  <meta name="description" content="{{ pageDescription }}">
+  {% if noindex %}<meta name="robots" content="noindex">{% endif %}
+  <link rel="canonical" href="{{ canonical }}">
+  <meta property="og:type" content="{{ ogType or 'website' }}">
+  <meta property="og:locale" content="sv_SE">
+  <meta property="og:site_name" content="{{ site.name }}">
+  <meta property="og:title" content="{{ pageTitle }}">
+  <meta property="og:description" content="{{ pageDescription }}">
+  <meta property="og:url" content="{{ canonical }}">
+  <meta property="og:image" content="{{ socialImage }}">
+  {%- if not ogImage %}
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  {%- endif %}
+  <meta property="og:image:alt" content="{{ ogImageAlt or (site.name + ' – hemsidor för småföretag i ' + site.city) }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ pageTitle }}">
+  <meta name="twitter:description" content="{{ pageDescription }}">
+  <meta name="twitter:image" content="{{ socialImage }}">
+  {%- if crumbs is defined %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Hem", "item": "{{ site.url }}/" },
+      {%- for crumb in crumbs %}
+      { "@type": "ListItem", "position": {{ loop.index + 1 }}, "name": {{ crumb.name | dump | safe }}, "item": "{{ site.url }}{{ crumb.url }}" },
+      {%- endfor %}
+      { "@type": "ListItem", "position": {{ crumbs.length + 2 }}, "name": {{ (crumbName or title) | dump | safe }}, "item": "{{ canonical }}" }
+    ]
+  }
+  </script>
+  {%- endif %}
+  <link rel="icon" href="/assets/img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <link rel="preload" href="/assets/fonts/inter-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/utilities.css">
+  <script type="module" src="/assets/js/main.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#innehall">Hoppa till innehåll</a>
+  {% include "partials/header.njk" %}
+  <main id="innehall" tabindex="-1">
+    {{ content | safe }}
+  </main>
+  {% include "partials/footer.njk" %}
+  {% include "partials/cookie-banner.njk" %}
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "layout": "layouts/case-study.njk",
+  "permalink": "/portfolio/{{ slug or page.fileSlug }}/",
+  "sitemap": true,
+  "ogType": "article",
+  "crumbs": [{ "name": "Portfolio", "url": "/portfolio/" }],
+  "eleventyComputed": {
+    "seoTitle": "{{ seo_title or (title + ' – kundcase | ' + site.name) }}",
+    "ogImage": "{{ cover }}",
+    "ogImageAlt": "{{ cover_alt }}"
+  }
+}

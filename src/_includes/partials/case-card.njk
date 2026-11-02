@@ -1,0 +1,20 @@
+<article class="case-card">
+  <a class="case-card__link" href="{{ item.url }}">
+    <div class="case-card__media">
+      {% image item.data.cover, item.data.cover_alt or "", "(min-width: 768px) 50vw, 100vw" %}
+    </div>
+    <div class="case-card__info">
+      {%- if item.data.logo %}
+      <span class="case-card__logo">{% image item.data.logo, "", "64px" %}</span>
+      {%- endif %}
+      <div>
+        <h3 class="case-card__title">{{ item.data.title }}</h3>
+        <ul class="case-card__tags">
+          {%- for tag in (item.data.tags if item.data.tags and item.data.tags.length else [item.data.industry]) %}
+          <li>{{ tag }}</li>
+          {%- endfor %}
+        </ul>
+      </div>
+    </div>
+  </a>
+</article>

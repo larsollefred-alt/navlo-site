@@ -1,0 +1,49 @@
+---
+layout: layouts/base.njk
+---
+{%- set testimonial = null %}
+{%- for t in collections.testimonials %}{% if t.data.case_study == page.fileSlug %}{% set testimonial = t %}{% endif %}{% endfor %}
+{%- set next = collections.portfolio | nextItem(page.url) %}
+<article class="section case-study">
+  <div class="container container--narrow">
+    <nav class="breadcrumbs" aria-label="Brödsmulor">
+      <ol>
+        <li><a href="/">Hem</a></li>
+        <li><a href="/portfolio/">Portfolio</a></li>
+        <li><span aria-current="page">{{ title }}</span></li>
+      </ol>
+    </nav>
+    <h1 class="title-page">{{ title }}</h1>
+    <dl class="case-study__facts">
+      <div><dt>Kund</dt><dd>{{ client }}</dd></div>
+      <div><dt>Bransch</dt><dd>{{ industry }}</dd></div>
+      {%- if package %}<div><dt>Paket</dt><dd>{{ package }}</dd></div>{% endif %}
+      {%- if url %}<div><dt>Webbplats</dt><dd><a href="{{ url }}" rel="noopener">{{ url | replace("https://", "") }}</a></dd></div>{% endif %}
+    </dl>
+  </div>
+  <div class="container case-study__hero">
+    {% image cover, cover_alt or "", "(min-width: 1200px) 1200px, 100vw", "eager" %}
+  </div>
+  <div class="container container--narrow prose">
+    {%- if challenge %}<h2>Utmaningen</h2>
+    {{ challenge | md | safe }}{% endif %}
+    {%- if solution %}<h2>Lösningen</h2>
+    {{ solution | md | safe }}{% endif %}
+    {%- if result %}<h2>Resultatet</h2>
+    {{ result | md | safe }}{% endif %}
+    {%- asyncEach img in gallery %}
+    <div class="case-study__gallery-item">{% image img.image or img, img.alt or "", "(min-width: 800px) 800px, 100vw" %}</div>
+    {%- endeach %}
+    {%- if quote %}
+    <blockquote class="case-study__quote"><p>{{ quote }}</p></blockquote>
+    {%- elif testimonial %}
+    {% set item = testimonial %}{% include "partials/testimonial.njk" %}
+    {%- endif %}
+    <p class="case-study__related">Vill du ha en liknande hemsida? Läs mer om <a href="/tjanster/ux-design/">UI/UX design</a> och <a href="/tjanster/webbutveckling/">webbutveckling</a>, eller se <a href="/#priser">priser för hemsidor</a>.</p>
+    {%- if next %}
+    <p class="case-study__next">Nästa projekt: <a href="{{ next.url }}">{{ next.data.title }}</a></p>
+    {%- endif %}
+  </div>
+</article>
+{% set ctaTitle = "Vill du ha något liknande?" %}
+{% include "partials/cta-band.njk" %}

@@ -1,0 +1,228 @@
+---
+layout: layouts/base.njk
+seoTitle: Navlo – Hemsidor i Karlstad för småföretag
+description: Vi bygger moderna hemsidor för småföretag i Karlstad. Snabb leverans, personlig support, SEO från start.
+---
+{% from "partials/icons.njk" import icon %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "{{ site.url }}/#website",
+      "url": "{{ site.url }}/",
+      "name": "{{ site.name }}",
+      "inLanguage": "sv-SE",
+      "publisher": { "@id": "{{ site.url }}/#business" }
+    },
+    {
+      "@type": ["LocalBusiness", "ProfessionalService"],
+      "@id": "{{ site.url }}/#business",
+      "name": "{{ site.name }}",
+      "description": "{{ site.pitch }}",
+      "url": "{{ site.url }}/",
+      "logo": "{{ site.url }}/assets/img/logo.svg",
+      "image": "{{ site.url }}{{ site.ogImage }}",
+      "email": "{{ site.email }}",
+      "telephone": "{{ site.phoneHref }}",
+      "priceRange": "2 000–3 500 kr",
+      "address": {
+        "@type": "PostalAddress",
+        {%- if site.address.street %}
+        "streetAddress": "{{ site.address.street }}",
+        "postalCode": "{{ site.address.postalCode }}",
+        {%- endif %}
+        "addressLocality": "{{ site.city }}",
+        "addressRegion": "{{ site.region }}",
+        "addressCountry": "SE"
+      },
+      "geo": { "@type": "GeoCoordinates", "latitude": {{ site.geo.latitude }}, "longitude": {{ site.geo.longitude }} },
+      "areaServed": [{ "@type": "City", "name": "{{ site.city }}" }, { "@type": "Country", "name": "Sverige" }],
+      "makesOffer": [
+        {%- for s in services %}
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": {{ s.title | dump | safe }}, "url": "{{ site.url }}/tjanster/{{ s.slug }}/" } }{{ "," if not loop.last }}
+        {%- endfor %}
+      ]{% if site.sameAs.length %},
+      "sameAs": {{ site.sameAs | dump | safe }}{% endif %}
+    }
+  ]
+}
+</script>
+
+<section class="hero">
+  <div class="container hero__grid">
+    <div class="hero__text">
+      <h1 class="title-hero">Hemsidor för småföretag i {{ site.city }}</h1>
+      <p class="hero__lead">Jag designar, bygger och sökoptimerar hemsidor för små företag – så att fler kunder hittar dig, litar på dig och hör av sig. Färdig sida på 2–4 veckor.</p>
+      <p class="button-row button-row--start">
+        <a class="button button--primary" href="#kontakt">Kom igång</a>
+        <a class="button button--secondary" href="/portfolio/">Portfolio</a>
+      </p>
+    </div>
+    {#- Swap src/assets/img/webbdesigner-karlstad-navlo.jpg to change the photo #}
+    <div class="hero__media">
+      {% image "/assets/img/webbdesigner-karlstad-navlo.jpg", "Laptop med kod på skärmen – Navlo bygger en ny hemsida för ett småföretag i Karlstad", "(min-width: 1024px) 50vw, 100vw", "eager", "hero__img" %}
+    </div>
+  </div>
+</section>
+
+<section class="section section--muted" id="tjanster" aria-labelledby="tjanster-title">
+  <div class="container">
+    <h2 class="title-section" id="tjanster-title">Hur jag kan hjälpa dig</h2>
+    <ul class="card-grid card-grid--3">
+      {%- for service in services %}
+      <li class="card service-card">
+        <span class="service-card__icon">{{ icon(service.icon, 48) }}</span>
+        <h3 class="service-card__title">
+          <a class="service-card__link" href="/tjanster/{{ service.slug }}/">{{ service.title }}</a>
+        </h3>
+        <p class="service-card__text">{{ service.text }}</p>
+        <span class="service-card__arrow" aria-hidden="true">{{ icon("arrow", 24) }}</span>
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="section section--navy" id="sokoptimering" aria-labelledby="seo-title">
+  <div class="container seo">
+    <div class="seo__text">
+      <h2 class="title-section" id="seo-title">Syns där dina kunder letar</h2>
+      <p class="seo__lead">De flesta som letar efter en frisör, snickare eller restaurang börjar med en sökning. Jag bygger din hemsida så att Google förstår vad du gör och var du finns, så att det är dig de hittar och inte konkurrenten.</p>
+      <ul class="seo__points">
+        <li>
+          <span class="seo__icon">{{ icon("speed", 28) }}</span>
+          <div><h3>Teknisk SEO från start</h3><p>Snabb laddning, mobilanpassning och rätt rubriker – det Google tittar på först.</p></div>
+        </li>
+        <li>
+          <span class="seo__icon">{{ icon("pin", 28) }}</span>
+          <div><h3>Lokal synlighet</h3><p>Jag hjälper dig med Google Företagsprofil så att du syns på kartan och i lokala sökningar.</p></div>
+        </li>
+        <li>
+          <span class="seo__icon">{{ icon("search", 28) }}</span>
+          <div><h3>Text som matchar sökningar</h3><p>Rubriker och texter skrivs med de ord dina kunder faktiskt söker på.</p></div>
+        </li>
+        <li>
+          <span class="seo__icon">{{ icon("chart", 28) }}</span>
+          <div><h3>Löpande arbete</h3><p>Med Hosting & drift fortsätter jag att förbättra din synlighet, månad för månad.</p></div>
+        </li>
+      </ul>
+    </div>
+    {#- Illustration of a search result, not a real screenshot #}
+    <div class="serp" aria-hidden="true">
+      <div class="serp__bar">{{ icon("search", 18) }}<span>frisör karlstad</span></div>
+      <div class="serp__result serp__result--you">
+        <span class="serp__tag">Din hemsida</span>
+        <span class="serp__site"><span class="serp__favicon"></span>dittforetag.se</span>
+        <span class="serp__title">Frisör i Karlstad – boka tid online</span>
+        <span class="serp__desc">Klippning, färg och styling i centrala Karlstad. Se priser och boka direkt i mobilen.</span>
+      </div>
+      <div class="serp__result"><span class="serp__line serp__line--short"></span><span class="serp__line"></span><span class="serp__line serp__line--mid"></span></div>
+      <div class="serp__result"><span class="serp__line serp__line--short"></span><span class="serp__line"></span><span class="serp__line serp__line--mid"></span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tint" id="processen" aria-labelledby="processen-title">
+  {#- Desktop: pauses briefly at the top, then the cards scroll at half speed (process.js) #}
+  <div class="process-pin" data-process>
+  <div class="container process">
+    <div class="process__intro">
+      <h2 class="title-page rule" id="processen-title">Processen</h2>
+      <p>Du har ett företag att driva. Därför är processen byggd så att du lägger så lite tid som möjligt – jag sköter resten.</p>
+      <p>Hela processen tar oftast 2–4 veckor.</p>
+    </div>
+    <ol class="process__steps">
+      {%- for step in process %}
+      <li class="card process__step">
+        <div class="process__head">
+          <span class="process__num" aria-hidden="true">{{ "0" + loop.index }}</span>
+          <span class="process__icon">{{ icon(step.icon, 32) }}</span>
+        </div>
+        <h3 class="process__title">{{ step.title }}</h3>
+        <p>{{ step.text }}</p>
+      </li>
+      {%- endfor %}
+    </ol>
+  </div>
+  </div>
+</section>
+
+<section class="section section--muted" id="priser" aria-labelledby="priser-title">
+  <div class="container">
+    <h2 class="title-section plans__title" id="priser-title">Välj det som passar ditt företag</h2>
+    <p class="plans__lead">Ingen timdebitering och inga dolda avgifter. Du vet exakt vad du betalar innan jag börjar.</p>
+    <ul class="plans">
+      {%- for plan in plans %}
+      <li class="plan{% if plan.featured %} plan--featured{% endif %}">
+        <span class="plan__badge">{{ icon(plan.icon, 18) }}{{ plan.name }}</span>
+        <p class="plan__price"><strong>{{ plan.price }}</strong> {{ plan.unit }}</p>
+        <p class="plan__note">{{ plan.note }}</p>
+        <p class="plan__fit">{{ plan.fit }}</p>
+        <ul class="plan__items">
+          {%- for item in plan.items %}
+          <li>{{ icon("check", 18) }}{{ item }}</li>
+          {%- endfor %}
+        </ul>
+        <a class="button plan__button" href="/kontakt/?paket={{ plan.paket }}">Kom igång</a>
+      </li>
+      {%- endfor %}
+    </ul>
+    <p class="plans__guarantee">{{ icon("check-circle", 22) }}Inte nöjd med designen? Då betalar du ingenting.</p>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="portfolio-title">
+  <div class="container">
+    <h2 class="title-section section__title" id="portfolio-title">Riktiga projekt, riktiga företag</h2>
+    <p class="section__lead">Från källarkrog till fotograf. Varje hemsida är ritad från grunden.</p>
+    <ul class="portfolio-grid">
+      {%- asyncEach item in collections.portfolio | featured | head(4) %}
+      <li>{% include "partials/case-card.njk" %}</li>
+      {%- endeach %}
+    </ul>
+    <p class="section__more"><a class="button button--secondary" href="/portfolio/">Se hela portfolion</a></p>
+  </div>
+</section>
+
+{%- set testimonials = collections.testimonials | featured %}
+{%- if testimonials.length %}
+<section class="section testimonials" aria-labelledby="omdomen-title">
+  <div class="container">
+    <h2 class="title-section testimonials__title" id="omdomen-title">Vad mina kunder säger</h2>
+    <ul class="testimonials__list">
+      {%- asyncEach item in testimonials %}
+      <li>{% include "partials/testimonial.njk" %}</li>
+      {%- endeach %}
+    </ul>
+  </div>
+</section>
+{%- endif %}
+
+<section class="section" id="vanliga-fragor" aria-labelledby="faq-title">
+  <div class="container">
+    <h2 class="title-page rule rule--muted" id="faq-title">Vanliga frågor</h2>
+    <ul class="faq-grid">
+      {%- for item in collections.faq %}
+      <li>
+        <details class="card faq-card">
+          <summary class="faq-card__summary">
+            <h3 class="faq-card__question">{{ item.data.question }}</h3>
+            <span class="faq-card__icon" aria-hidden="true"></span>
+          </summary>
+          <p class="faq-card__answer">{{ item.data.answer }}</p>
+        </details>
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="section contact" id="kontakt" aria-labelledby="kontakt-title">
+  <div class="container container--narrow">
+    <h2 class="title-page" id="kontakt-title">Redo att synas?</h2>
+    <p class="contact__lead">Berätta kort om ditt företag så får du ett förslag inom 24 timmar. Det kostar ingenting att fråga.</p>
+    {% include "partials/contact-form.njk" %}
+  </div>
+</section>

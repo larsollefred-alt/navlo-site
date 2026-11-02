@@ -1,0 +1,88 @@
+# Decap CMS – collections per SPEC.MD §6. Login via GitHub (Netlify as OAuth provider).
+backend:
+  name: github
+  repo: OWNER/navlo # TODO: replace with the GitHub repo
+  branch: main
+
+locale: sv
+media_folder: src/assets/img/uploads
+public_folder: /assets/img/uploads
+
+collections:
+  - name: portfolio
+    label: Portfolio
+    label_singular: Case
+    folder: src/content/portfolio
+    create: true
+    slug: "{{fields.slug}}"
+    summary: "{{title}} – {{client}}"
+    sortable_fields: [date, title]
+    fields:
+      - { name: title, label: Rubrik, widget: string }
+      - { name: slug, label: "Slug (del av adressen, t.ex. frisor-karlstad)", widget: string, pattern: ["^[a-z0-9-]+$", "Bara små bokstäver, siffror och bindestreck"] }
+      - { name: seo_title, label: "SEO-titel (max 60 tecken)", widget: string, required: false, hint: "T.ex. Frisör X – hemsida för frisör | Navlo. Lämnas tom: Rubrik – kundcase | Navlo" }
+      - { name: description, label: "Metabeskrivning (max 160 tecken)", widget: text, required: false, hint: "Visas i Googles sökresultat" }
+      - { name: client, label: Kund, widget: string }
+      - name: industry
+        label: Bransch
+        widget: select
+        options: [Butik, "Restaurang & café", Hantverk, "Skönhet & hälsa", "Foto & konst", Konsult, Övrigt]
+      - name: package
+        label: Paket
+        widget: select
+        options: [Enkel hemsida, Avancerad hemsida]
+        required: false
+      - { name: date, label: Datum, widget: datetime, date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
+      - { name: cover, label: Omslagsbild, widget: image }
+      - { name: cover_alt, label: Alt-text för omslagsbilden, widget: string }
+      - { name: logo, label: "Kundens logga (kvadratisk)", widget: image, required: false }
+      - { name: tags, label: "Taggar (visas under bilden)", widget: list, required: false, hint: "T.ex. Webbdesign, UX/UI, Bordsbokning" }
+      - name: gallery
+        label: Bildgalleri
+        widget: list
+        required: false
+        fields:
+          - { name: image, label: Bild, widget: image }
+          - { name: alt, label: Alt-text, widget: string }
+      - { name: challenge, label: Utmaningen, widget: markdown, buttons: [bold, italic, link, bulleted-list], editor_components: [] }
+      - { name: solution, label: Lösningen, widget: markdown, buttons: [bold, italic, link, bulleted-list], editor_components: [] }
+      - { name: result, label: Resultatet, widget: markdown, required: false, buttons: [bold, italic, link, bulleted-list], editor_components: [] }
+      - { name: quote, label: Kundcitat, widget: text, required: false }
+      - { name: url, label: Länk till sidan, widget: string, required: false }
+      - { name: featured, label: Visa på startsidan, widget: boolean, default: false }
+
+  - name: testimonials
+    label: Omdömen
+    label_singular: Omdöme
+    folder: src/content/testimonials
+    create: true
+    slug: "{{name}}"
+    identifier_field: name
+    summary: "{{name}}"
+    fields:
+      - { name: name, label: Namn, widget: string }
+      - { name: company, label: Företag, widget: string, required: false }
+      - { name: role, label: Roll, widget: string, required: false }
+      - { name: photo, label: Foto, widget: image, required: false }
+      - { name: quote, label: Citat, widget: text }
+      - { name: rating, label: "Betyg (1–5)", widget: number, value_type: int, min: 1, max: 5, required: false }
+      - { name: case_study, label: Kopplat case, widget: relation, collection: portfolio, value_field: "{{slug}}", search_fields: [title, client], display_fields: [title], required: false }
+      - { name: featured, label: Visa på startsidan, widget: boolean, default: false }
+
+  - name: faq
+    label: Vanliga frågor
+    label_singular: Fråga
+    folder: src/content/faq
+    create: true
+    slug: "{{question}}"
+    identifier_field: question
+    summary: "{{order}}. {{question}}"
+    sortable_fields: [order, category]
+    fields:
+      - { name: question, label: Fråga, widget: string }
+      - { name: answer, label: Svar, widget: text }
+      - name: category
+        label: Kategori
+        widget: select
+        options: [Pris, Process, Hosting, Tekniskt]
+      - { name: order, label: Ordning, widget: number, value_type: int }

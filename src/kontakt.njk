@@ -1,0 +1,30 @@
+---
+layout: layouts/base.njk
+title: Kontakt
+seoTitle: Kontakt – Webbdesigner i Karlstad | Navlo
+crumbs: []
+description: Berätta om ditt företag så hör Navlo av sig inom 24 timmar med pris och tidsplan. Hemsidor för företag i Karlstad.
+---
+<section class="section contact">
+  <div class="container contact__grid">
+    <div>
+      <h1 class="title-page">Redo att synas?</h1>
+      <p class="contact__lead">Berätta kort om ditt företag så får du ett förslag inom 24 timmar. Det kostar ingenting att fråga.</p>
+      {% include "partials/contact-form.njk" %}
+    </div>
+    <aside class="contact__aside" aria-labelledby="direkt-title">
+      <h2 class="contact__aside-title" id="direkt-title">Hellre direktkontakt?</h2>
+      <ul class="contact__details">
+        <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+        <li><a href="tel:{{ site.phoneHref }}">{{ site.phone }}</a></li>
+        <li>Jag jobbar med företag i {{ site.city }} och resten av Värmland.</li>
+      </ul>
+      <h2 class="contact__aside-title">Vad händer sen?</h2>
+      <ol class="contact__next">
+        <li>Jag läser ditt meddelande och svarar inom 24 timmar.</li>
+        <li>Du får ett förslag på pris och tidsplan.</li>
+        <li>Säger du ja skickar jag ett kort frågeformulär om ditt företag.</li>
+      </ol>
+    </aside>
+  </div>
+</section>

@@ -1,0 +1,42 @@
+---
+layout: layouts/base.njk
+title: Tjänster
+seoTitle: Våra tjänster – Hemsidor och webbdesign | Navlo
+description: Enkel hemsida från 2 000 kr, flersidig från 3 500 kr. Inklusive design, SEO och support.
+permalink: /tjanster/
+crumbs: []
+---
+{% from "partials/icons.njk" import icon %}
+<section class="section page-intro">
+  <div class="container">
+    <nav class="breadcrumbs" aria-label="Brödsmulor">
+      <ol>
+        <li><a href="/">Hem</a></li>
+        <li><span aria-current="page">Tjänster</span></li>
+      </ol>
+    </nav>
+    <h1 class="title-page">Hemsidor och webbdesign i {{ site.city }}</h1>
+    <p class="page-intro__lead">Jag hjälper småföretag med allt från design till drift: en modern hemsida som syns på Google, är lätt att använda och fungerar lika bra i mobilen som på datorn.</p>
+  </div>
+</section>
+
+<section class="section section--muted" aria-labelledby="tjanster-lista-title">
+  <div class="container">
+    <h2 class="visually-hidden" id="tjanster-lista-title">Mina tjänster</h2>
+    <ul class="card-grid card-grid--3">
+      {%- for service in services %}
+      <li class="card service-card">
+        <span class="service-card__icon">{{ icon(service.icon, 48) }}</span>
+        <h3 class="service-card__title">
+          <a class="service-card__link" href="/tjanster/{{ service.slug }}/">{{ service.title }}</a>
+        </h3>
+        <p class="service-card__text">{{ service.text }}</p>
+        <span class="service-card__arrow" aria-hidden="true">{{ icon("arrow", 24) }}</span>
+      </li>
+      {%- endfor %}
+    </ul>
+    <p class="section__more">Se <a href="/#priser">priser för hemsidor</a>, läs om <a href="/#processen">hur processen går till</a> eller titta på <a href="/portfolio/">hemsidor jag byggt</a>.</p>
+  </div>
+</section>
+{% set ctaTitle = "Vill du veta vad det kostar?" %}
+{% include "partials/cta-band.njk" %}

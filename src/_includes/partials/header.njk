@@ -1,0 +1,29 @@
+{%- set nav = [
+  { url: "/#tjanster", label: "Tjänster" },
+  { url: "/#processen", label: "Processen" },
+  { url: "/#priser", label: "Priser" },
+  { url: "/portfolio/", label: "Portfolio" },
+  { url: "/#vanliga-fragor", label: "Vanliga frågor" }
+] %}
+<header class="site-header" data-header>
+  <div class="container site-header__inner">
+    <a class="logo" href="/" aria-label="{{ site.name }} – till startsidan">
+      {% include "partials/logo.njk" %}
+    </a>
+    <nav class="nav" id="huvudmeny" aria-label="Huvudmeny" data-nav>
+      <ul class="nav__list">
+        {%- for item in nav %}
+        <li><a class="nav__link" href="{{ item.url }}"{% if item.url == page.url %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
+        {%- endfor %}
+        {#- Phones: the Kontakt button is hidden, so Kontakt lives in the menu instead #}
+        <li class="nav__item--mobile"><a class="nav__link" href="/kontakt/">Kontakt</a></li>
+      </ul>
+    </nav>
+    {#- Static button: no hover change, unlike the text links #}
+    <a class="button button--primary nav__button" href="/kontakt/">Kontakt</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="huvudmeny" data-nav-toggle hidden>
+      <span class="nav-toggle__bars" aria-hidden="true"></span>
+      <span class="visually-hidden">Meny</span>
+    </button>
+  </div>
+</header>

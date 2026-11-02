@@ -1,0 +1,37 @@
+<footer class="site-footer">
+  <div class="container site-footer__grid">
+    <div class="site-footer__brand">
+      <a class="logo" href="/" aria-label="{{ site.name }} – till startsidan">
+        {% include "partials/logo.njk" %}
+      </a>
+      <p>{{ site.pitch }}</p>
+    </div>
+    <nav aria-label="Sidfot">
+      <h2 class="site-footer__heading">Sidor</h2>
+      <ul class="site-footer__list">
+        <li><a href="/">Hem</a></li>
+        <li><a href="/tjanster/">Tjänster</a></li>
+        <li><a href="/portfolio/">Portfolio</a></li>
+        <li><a href="/kontakt/">Kontakt</a></li>
+      </ul>
+    </nav>
+    <div>
+      <h2 class="site-footer__heading">Kontakt</h2>
+      <ul class="site-footer__list">
+        <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+        <li><a href="tel:{{ site.phoneHref }}">{{ site.phone }}</a></li>
+        <li>{{ site.city }}, Värmland</li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="site-footer__bottom">
+      <p>© {{ build.year }} {{ site.name }} · Org.nr {{ site.orgnr }}</p>
+      <ul class="site-footer__legal">
+        <li><a href="/integritetspolicy/">Integritetspolicy</a></li>
+        <li><a href="/cookies/">Cookiepolicy</a></li>
+        <li><a href="/cookies/" data-consent-open>Cookie-inställningar</a></li>
+    </ul>
+    </div>
+  </div>
+</footer>

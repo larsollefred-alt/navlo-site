@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Frågeformulär",
+    "text": "Fyll i ett kort frågeformulär om ditt företag och dina kunder. Jag tar det därifrån.",
+    "icon": "form"
+  },
+  {
+    "title": "Design",
+    "text": "Jag tar fram ett designförslag anpassat efter ditt företag. Du ser hur sidan kommer att se ut innan något byggs.",
+    "icon": "pen"
+  },
+  {
+    "title": "Återkoppling",
+    "text": "Din feedback formar slutresultatet. Tre revisionsrundor ingår, så att det blir rätt – snabbt.",
+    "icon": "chat"
+  },
+  {
+    "title": "Utveckling",
+    "text": "När designen är godkänd bygger jag sidan och testar den på mobil, dator och i olika webbläsare.",
+    "icon": "code"
+  },
+  {
+    "title": "Lansering",
+    "text": "Jag kopplar din domän och sidan går live. Du får en egen inloggning så att du kan ändra text och bilder när du vill.",
+    "icon": "rocket"
+  },
+  {
+    "title": "Support",
+    "text": "Hemsidan är live, men jag försvinner inte. Strular något eller behöver du hjälp hör du bara av dig, så löser jag det.",
+    "icon": "check-circle"
+  }
+]

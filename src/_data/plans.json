@@ -1,0 +1,56 @@
+[
+  {
+    "name": "Enkel hemsida",
+    "icon": "star",
+    "price": "2 000",
+    "unit": "kr",
+    "note": "engångspris",
+    "paket": "enkel",
+    "featured": false,
+    "items": [
+      "Hemsida på en sida",
+      "Design som ritas från grunden",
+      "Mobilanpassad",
+      "Kontaktformulär",
+      "Grundläggande SEO",
+      "Max 3 designrevisioner",
+      "Klar på 2–4 veckor"
+    ],
+    "fit": "Passar dig som vill synas snabbt med en tydlig sida."
+  },
+  {
+    "name": "Avancerad hemsida",
+    "icon": "bolt",
+    "price": "3 500",
+    "unit": "kr",
+    "note": "engångspris",
+    "paket": "avancerad",
+    "featured": true,
+    "items": [
+      "Allt i Enkel hemsida",
+      "Upp till 4 sidor",
+      "Research om dina kunder och konkurrenter",
+      "SEO på varje sida",
+      "Tydliga vägar till att boka eller höra av sig",
+      "Max 3 designrevisioner"
+    ],
+    "fit": "Passar dig som vill få fler kunder via Google."
+  },
+  {
+    "name": "Hosting & drift",
+    "icon": "shield",
+    "price": "229",
+    "unit": "kr/mån",
+    "note": "valfritt tillägg",
+    "paket": "hosting",
+    "featured": false,
+    "items": [
+      "Hosting & SSL",
+      "Uppdateringar och säkerhet",
+      "Ändringar av text och bilder",
+      "Löpande arbete med SEO",
+      "Support utan ärendenummer eller köer"
+    ],
+    "fit": "Passar dig som vill slippa allt tekniskt."
+  }
+]
